@@ -1,0 +1,581 @@
+/* ============================================================
+   JOULE — RESPONSIVE STYLESHEET
+   Add <link rel="stylesheet" href="assets/css/responsive.css" />
+   AFTER your main style.css link in <head>.
+   ============================================================
+
+   Breakpoints used:
+   --mobile:  ≤ 480px
+   --tablet:  481px – 768px
+   --laptop:  769px – 1024px
+   --desktop: 1025px+  (base styles, no override needed)
+   ============================================================ */
+
+/* ── GLOBAL BOX MODEL ─────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── CONTAINER ────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 5vw, 80px);
+}
+
+/* ══════════════════════════════════════════════════════════
+   NAVIGATION
+   ══════════════════════════════════════════════════════════ */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 clamp(16px, 4vw, 48px);
+  flex-wrap: wrap;
+}
+
+/* Hide desktop links on small screens */
+@media (max-width: 768px) {
+  .nav__links {
+    display: none;
+  }
+
+  .nav__hamburger {
+    display: flex;           /* show burger icon */
+  }
+
+  .nav__toggle {
+    margin-left: auto;       /* push toggle to the right of logo */
+  }
+}
+
+/* Show desktop links, hide burger on large screens */
+@media (min-width: 769px) {
+  .nav__hamburger {
+    display: none;
+  }
+
+  .nav__drawer {
+    display: none !important; /* drawer never shows on desktop */
+  }
+}
+
+/* Mobile drawer full-screen */
+.nav__drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  padding: 40px;
+  background: var(--bg, #0a0a0a);
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.12em;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav__drawer.is-open {
+  transform: translateX(0);
+}
+
+/* ══════════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════════ */
+.hero {
+  min-height: 100svh;
+  position: relative;
+}
+
+.hero__inner {
+  padding: clamp(80px, 10vw, 140px) clamp(16px, 5vw, 80px) clamp(120px, 16vw, 200px) !important;
+}
+
+.hero__title {
+  font-size: clamp(2.8rem, 10vw, 9rem);
+  line-height: 1;
+}
+
+.hero__subtitle {
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+}
+
+.hero__desc {
+  font-size: clamp(0.82rem, 1.8vw, 1rem);
+  max-width: min(520px, 90vw);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Stats bar */
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+@media (max-width: 600px) {
+  .hero__stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   MARQUEE
+   ══════════════════════════════════════════════════════════ */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee__track {
+  display: inline-flex;
+  gap: 40px;
+  animation: marquee-scroll 20s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ══════════════════════════════════════════════════════════
+   EXPLAINER / VIDEO SECTION
+   ══════════════════════════════════════════════════════════ */
+.explainer__head {
+  text-align: center;
+  max-width: 680px;
+  margin-inline: auto;
+  margin-bottom: clamp(32px, 5vw, 64px);
+}
+
+.explainer__title {
+  font-size: clamp(2rem, 6vw, 5rem);
+}
+
+.video-player {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.video-player img,
+.video-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* ══════════════════════════════════════════════════════════
+   STORY SECTION
+   ══════════════════════════════════════════════════════════ */
+.story__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .story__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story__images {
+    order: -1;                   /* images above text on mobile */
+    max-height: 420px;
+  }
+}
+
+.story__img-main {
+  width: 100%;
+  height: auto;
+  max-height: clamp(280px, 50vw, 560px);
+  object-fit: cover;
+}
+
+.story__img-secondary {
+  width: 50%;
+  height: auto;
+  object-fit: cover;
+}
+
+.story h2 {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+}
+
+/* ══════════════════════════════════════════════════════════
+   PROBLEM SECTION
+   ══════════════════════════════════════════════════════════ */
+.problem__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .problem__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.problem__heading {
+  font-size: clamp(1.8rem, 5vw, 4rem);
+}
+
+/* ══════════════════════════════════════════════════════════
+   SOLUTION — STEPS GRID
+   ══════════════════════════════════════════════════════════ */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 3vw, 32px);
+}
+
+@media (max-width: 900px) {
+  .steps-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Make Step 03 full-width on tablet */
+  .step-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .step-card:last-child {
+    grid-column: auto;
+  }
+}
+
+.step-card__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* ══════════════════════════════════════════════════════════
+   FEATURES SECTION
+   ══════════════════════════════════════════════════════════ */
+.features__intro {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+  margin-bottom: clamp(40px, 6vw, 80px);
+}
+
+@media (max-width: 768px) {
+  .features__intro {
+    grid-template-columns: 1fr;
+  }
+}
+
+.features__intro h2 {
+  font-size: clamp(2rem, 5vw, 4.5rem);
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.5vw, 28px);
+}
+
+@media (max-width: 900px) {
+  .features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .features__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SPECS SECTION
+   ══════════════════════════════════════════════════════════ */
+.specs__head {
+  text-align: center;
+  max-width: 640px;
+  margin-inline: auto;
+  margin-bottom: clamp(32px, 5vw, 64px);
+}
+
+.specs__head h2 {
+  font-size: clamp(2rem, 5vw, 5rem);
+}
+
+.specs__portraits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2.5vw, 28px);
+}
+
+@media (max-width: 900px) {
+  .specs__portraits {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .specs__portraits {
+    grid-template-columns: 1fr;
+  }
+}
+
+.spec-portrait img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+/* "Made For" who-grid */
+.who-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ══════════════════════════════════════════════════════════
+   GALLERY GRID
+   ══════════════════════════════════════════════════════════ */
+.gallery__head {
+  text-align: center;
+  padding-inline: clamp(16px, 5vw, 80px);
+  margin-bottom: clamp(24px, 4vw, 48px);
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 4px;
+}
+
+/* Typical editorial layout — adjust to match your original */
+.gallery__item.g--1 { grid-column: span 2; grid-row: span 2; }
+.gallery__item.g--2 { grid-column: span 1; }
+.gallery__item.g--3 { grid-column: span 1; }
+.gallery__item.g--4 { grid-column: span 1; }
+.gallery__item.g--5 { grid-column: span 1; }
+.gallery__item.g--6 { grid-column: span 2; }
+.gallery__item.g--7 { grid-column: span 2; }
+
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 200px;
+  transition: transform 0.4s ease;
+}
+
+.gallery__item:hover img {
+  transform: scale(1.04);
+}
+
+@media (max-width: 900px) {
+  .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery__item.g--1,
+  .gallery__item.g--6,
+  .gallery__item.g--7 {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery__item[class*="g--"] {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   KICKSTARTER CTA
+   ══════════════════════════════════════════════════════════ */
+.cta__inner {
+  text-align: center;
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.cta__inner h2 {
+  font-size: clamp(2rem, 6vw, 5rem);
+}
+
+.cta__perks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 2.5vw, 28px);
+  margin-block: clamp(32px, 5vw, 56px);
+}
+
+@media (max-width: 768px) {
+  .cta__perks {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .cta__perks {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* ══════════════════════════════════════════════════════════
+   WAITLIST
+   ══════════════════════════════════════════════════════════ */
+.waitlist__inner {
+  text-align: center;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+.waitlist__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.waitlist__input {
+  flex: 1 1 260px;
+  min-width: 0;                 /* prevents overflow */
+}
+
+.waitlist__submit {
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════════════════════ */
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+  padding: clamp(32px, 5vw, 64px) clamp(16px, 5vw, 80px);
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .footer__inner {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer__right {
+    margin-top: auto;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   BUTTONS — universal responsive tweaks
+   ══════════════════════════════════════════════════════════ */
+.btn {
+  white-space: nowrap;
+  padding: clamp(10px, 2vw, 14px) clamp(20px, 3.5vw, 36px);
+  font-size: clamp(0.75rem, 1.5vw, 0.88rem);
+}
+
+/* ══════════════════════════════════════════════════════════
+   MODALS & LIGHTBOX — always full-screen on mobile
+   ══════════════════════════════════════════════════════════ */
+.modal__box {
+  width: min(560px, 92vw);
+  max-height: 90svh;
+  overflow-y: auto;
+  padding: clamp(24px, 5vw, 48px);
+}
+
+.lightbox img {
+  max-width: 94vw;
+  max-height: 90svh;
+  object-fit: contain;
+}
+
+/* ══════════════════════════════════════════════════════════
+   CUSTOM CURSOR — hide on touch devices
+   ══════════════════════════════════════════════════════════ */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════
+   SECTION SPACING (fluid vertical rhythm)
+   ══════════════════════════════════════════════════════════ */
+section {
+  padding-block: clamp(48px, 8vw, 120px);
+}
+
+.section-label {
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 6vw, 5.5rem);
+}
+
+/* ══════════════════════════════════════════════════════════
+   UTILITY: prevent horizontal overflow
+   ══════════════════════════════════════════════════════════ */
+body {
+  overflow-x: hidden;
+}

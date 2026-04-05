@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
 </head>
 <body>
 
@@ -683,5 +684,32 @@
   </div>
 
   <script src="assets/js/main.js"></script>
+  <script>
+    /* ── MOBILE HAMBURGER MENU (fallback if main.js missing) ── */
+    (function() {
+      var hamburger = document.getElementById('hamburger');
+      var drawer    = document.getElementById('drawer');
+      if (!hamburger || !drawer) return;
+
+      hamburger.addEventListener('click', function() {
+        drawer.classList.toggle('is-open');
+        hamburger.setAttribute('aria-expanded', drawer.classList.contains('is-open'));
+        document.body.style.overflow = drawer.classList.contains('is-open') ? 'hidden' : '';
+      });
+
+      // Close drawer when a link is clicked
+      drawer.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() { closeDrawer(); });
+      });
+    }());
+
+    function closeDrawer() {
+      var drawer    = document.getElementById('drawer');
+      var hamburger = document.getElementById('hamburger');
+      if (drawer)    drawer.classList.remove('is-open');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  </script>
 </body>
 </html>
