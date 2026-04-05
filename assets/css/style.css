@@ -44,7 +44,6 @@
 
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --transition:  0.4s ease;
-
 }
 
 /* ── DARK THEME ── */
@@ -275,11 +274,8 @@ body:has(button:hover) .cursor-dot { width: 20px; height: 20px; }
 }
 .btn--ghost {
   background: transparent;
-  color: var(--ghost-color);
-  border: 1px solid currentColor;
-  /* optional */
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.35);
 }
 .btn--ghost:hover {
   border-color: var(--orange);
@@ -330,23 +326,18 @@ body:has(button:hover) .cursor-dot { width: 20px; height: 20px; }
 /* ── 7. HERO ──────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  min-height: 100svh;
-  min-height: 700px;
-  display: flex;
-  align-items: center;
-  overflow: visible;           /* Allows stats bar to overflow hero edges */
-  /* reserve room so hero content doesn't overlap the .hero__stats */
-  padding-bottom: 120px;
+  height: 100vh; min-height: 700px;
+  display: flex; align-items: center;
+  overflow: hidden;
 }
 .hero__bg {
   position: absolute; inset: 0; z-index: 0;
-  background-image: url('/assets/images/Hero-bg.png');
+  background-image: url('/Joule/assets/images/Hero-bg.png');
   background-size: cover;
   background-position: center 25%;
   transform: scale(1.06);
   animation: heroZoom 14s var(--ease-out) forwards;
   transition: filter var(--transition);
-  will-change: transform;
 }
 [data-theme="dark"]  .hero__bg { filter: brightness(0.42) saturate(0.82); }
 [data-theme="light"] .hero__bg { filter: brightness(0.80) saturate(0.88); }
@@ -1350,7 +1341,11 @@ body:has(button:hover) .cursor-dot { width: 20px; height: 20px; }
   .footer__right { text-align: left; }
   .footer__credit { justify-content: flex-start; }
 
-  .hero__content { padding: 0 28px; }
+  .hero__content { padding: 0 28px; max-width: 580px; }
+  .hero__title   { font-size: clamp(52px, 7vw, 90px); }
+  /* Tablet: buttons stay side by side */
+  .hero__actions { flex-direction: row; gap: 12px; }
+  .hero__actions .btn { flex: 1 1 0; max-width: 220px; }
   .hero__stats   { grid-template-columns: repeat(2, 1fr); }
   .hero__scroll  { left: 28px; }
 
@@ -1381,19 +1376,82 @@ body:has(button:hover) .cursor-dot { width: 20px; height: 20px; }
 
 /* Mobile (≤ 640px) */
 @media (max-width: 640px) {
-  :root { --btn-h: 48px; --btn-px: 28px; }
+  :root { --btn-h: 52px; --btn-px: 24px; }
 
   .nav     { padding: 0 20px; }
   .container { padding: 0 20px; }
   .footer  { padding: 36px 20px; }
 
-  .hero { min-height: 100svh; }
-  .hero__content { padding: 0 20px; max-width: 100%; }
-  .hero__title   { font-size: clamp(46px, 12vw, 72px); }
-  .hero__actions { gap: 10px; }
-  .hero__actions .btn { max-width: none; }
-  .hero__stats   { grid-template-columns: repeat(2, 1fr); }
-  .hero__scroll  { display: none; }
+  /* Hero — full viewport, image zooms to subject */
+  .hero {
+    min-height: 100svh;
+    height: 100svh;
+    align-items: flex-end;
+    padding-bottom: 110px;
+  }
+  .hero__bg {
+    background-position: center center;
+    background-size: cover;
+  }
+  /* Stronger left veil on mobile so text is always readable */
+  .hero__veil-side {
+    background: linear-gradient(
+      to bottom,
+      rgba(4,4,4,0.55) 0%,
+      rgba(4,4,4,0.72) 55%,
+      rgba(4,4,4,0.88) 100%
+    );
+  }
+  [data-theme="light"] .hero__veil-side {
+    background: linear-gradient(
+      to bottom,
+      rgba(248,243,237,0.55) 0%,
+      rgba(248,243,237,0.75) 55%,
+      rgba(248,243,237,0.92) 100%
+    );
+  }
+
+  .hero__content {
+    padding: 0 24px 0 24px;
+    max-width: 100%;
+    width: 100%;
+  }
+  .hero__eyebrow { font-size: 10px; margin-bottom: 10px; }
+  .hero__title {
+    font-size: clamp(44px, 13vw, 68px);
+    margin-bottom: 10px;
+  }
+  .hero__subtitle { font-size: 16px; margin-bottom: 14px; }
+  .hero__desc {
+    font-size: 13px;
+    margin-bottom: 28px;
+    max-width: 100%;
+  }
+
+  /* Buttons: stack vertically, full width */
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    width: 100%;
+  }
+  .hero__actions .btn {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  /* Stats: 2 columns, compact */
+  .hero__stats {
+    grid-template-columns: repeat(2, 1fr);
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+  }
+  .stat { padding: 14px 16px; }
+  .stat__num  { font-size: 26px; }
+  .stat__label { font-size: 9px; letter-spacing: 0.15em; }
+
+  .hero__scroll { display: none; }
 
   .story   { padding: 80px 0; }
   .story__grid   { gap: 48px; }
