@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Joule — The modular backpack that transforms into a complete mobile workstation. Built for creators, remote workers & modern professionals." />
+  <title>JOULE — Your Workspace, Anywhere</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- ── NAVIGATION ── -->
+  <nav class="nav" id="mainNav">
+    <a class="nav__logo" href="#top">J<span>O</span>ULE</a>
+    <ul class="nav__links">
+      <li><a href="#story">Story</a></li>
+      <li><a href="#solution">Solution</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#specs">Specs</a></li>
+      <li><a href="#ks" class="nav__cta">Back on Kickstarter</a></li>
+    </ul>
+    <div class="nav__toggle" id="themeToggle" title="Toggle theme">
+      <span class="toggle-icon">🌙</span>
+      <div class="toggle-track"></div>
+      <span class="toggle-icon">☀️</span>
+      <span class="toggle-label" id="themeLabel">Dark</span>
+    </div>
+    <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <nav class="nav__drawer" id="drawer">
+    <a href="#story"    onclick="closeDrawer()">Story</a>
+    <a href="#solution" onclick="closeDrawer()">Solution</a>
+    <a href="#features" onclick="closeDrawer()">Features</a>
+    <a href="#specs"    onclick="closeDrawer()">Specs</a>
+    <a href="#ks"       onclick="closeDrawer()">Back on Kickstarter</a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="top">
+    <div class="hero__bg"></div>
+
+    <!-- padded inner wrapper (keeps bg full-bleed while adding padding to all other hero elements) -->
+    <div class="hero__inner" style="padding:48px 24px; box-sizing:border-box;">
+
+      <div class="hero__veil-side"></div>
+      <div class="hero__veil-bot"></div>
+      <div class="hero__grain"></div>
+
+      <div class="hero__content">
+        <p class="hero__eyebrow">By OLO Art Studio &mdash; USA</p>
+        <h1 class="hero__title">
+          THE BAG<br>THAT <span class="accent">BECOMES</span><br>YOUR DESK
+        </h1>
+        <p class="hero__subtitle">Work anywhere. Travel smarter. Stay ready.</p>
+        <p class="hero__desc">
+          Joule is the world's first modular backpack system that transforms into a complete
+          mobile workstation — engineered for creators, remote workers, and modern professionals
+          who refuse to be tied to a desk.
+        </p>
+        <div class="hero__actions">
+          <a href="https://www.kickstarter.com" target="_blank" rel="noopener"
+             class="btn btn--primary">Back on Kickstarter</a>
+          <a href="#solution" class="btn btn--ghost">See How It Works</a>
+        </div>
+      </div>
+
+      <p class="hero__scroll">Scroll to explore</p>
+    </div>
+
+    <div class="hero__stats">
+      <div class="stat">
+        <span class="stat__num" data-target="3">0</span>
+        <span class="stat__label">Modes in 1 Bag</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num" data-target="60" data-suffix="s">0</span>
+        <span class="stat__label">Setup Time</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num" data-target="100" data-prefix="+" data-suffix="%">0</span>
+        <span class="stat__label">More Productive</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num" data-target="1" data-suffix=" System">0</span>
+        <span class="stat__label">No Desk Required</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ── -->
+  <div class="marquee">
+    <div class="marquee__track">
+      <span class="marquee__item">BACKPACK</span>
+      <span class="marquee__item">CARRY-ON</span>
+      <span class="marquee__item">WORKSTATION</span>
+      <span class="marquee__item">MOBILE DESK</span>
+      <span class="marquee__item">COLLAPSIBLE SEAT</span>
+      <span class="marquee__item">BIOMETRIC LOCK</span>
+      <span class="marquee__item">USB-C POWER</span>
+      <span class="marquee__item">BORN IN AFRICA</span>
+      <span class="marquee__item">BACKPACK</span>
+      <span class="marquee__item">CARRY-ON</span>
+      <span class="marquee__item">WORKSTATION</span>
+      <span class="marquee__item">MOBILE DESK</span>
+      <span class="marquee__item">COLLAPSIBLE SEAT</span>
+      <span class="marquee__item">BIOMETRIC LOCK</span>
+      <span class="marquee__item">USB-C POWER</span>
+      <span class="marquee__item">BORN IN AFRICA</span>
+    </div>
+  </div>
+
+  <!-- ── EXPLAINER VIDEO ── -->
+  <section class="explainer" id="explainer">
+    <div class="container">
+      <div class="explainer__head">
+        <div class="explainer__badge reveal">
+          <span class="live-dot"></span> Watch Joule In Action
+        </div>
+        <h2 class="explainer__title reveal delay-1">SEE THE SYSTEM UNFOLD</h2>
+        <p class="explainer__sub reveal delay-2">
+          From carry to full workstation in under 60 seconds. Watch how Joule turns any
+          location into a productive workspace.
+        </p>
+      </div>
+
+      <div class="video-player reveal delay-3" id="videoPlayer">
+        <div class="video-slides">
+          <div class="video-slide is-active">
+            <img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323666/4O5A0692_uvxpmn.jpg" alt="Joule carry mode">
+          </div>
+          <div class="video-slide">
+            <img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323664/4O5A0747_ooppav.jpg" alt="Joule work setup">
+          </div>" alt="Joule deploy workstation">
+          </div>
+          <div class="video-slide">
+            <img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323684/4O5A0813_paahto.jpg" alt="Joule work setup">
+          </div>
+          <div class="video-slide">
+            <img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323760/4O5A0903_c8rcn5.jpg" alt="Joule in the field">
+          </div>
+        </div>
+        <div class="video-overlay"></div>
+        <div class="video-rec">
+          <span class="rec-dot"></span> JOULE SYSTEM DEMO
+        </div>
+        <div class="video-timestamp" id="videoTs">00:00:00</div>
+        <div class="video-ui" id="videoUI">
+          <button class="video-play-btn" id="videoPlayBtn" aria-label="Play demo">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </button>
+          <span class="video-play-label">WATCH THE DEMO</span>
+          <p class="video-coming-soon" id="videoNote">
+            Full demo video coming soon. Real footage will replace this preview.
+          </p>
+        </div>
+        <div class="video-tabs">
+          <button class="video-tab is-active" onclick="videoSwitch(0, this)">Carry</button>
+          <button class="video-tab" onclick="videoSwitch(1, this)">Deploy</button>
+          <button class="video-tab" onclick="videoSwitch(2, this)">Work</button>
+          <button class="video-tab" onclick="videoSwitch(3, this)">Field</button>
+        </div>
+        <div class="video-progress">
+          <div class="video-progress-bar" id="videoBar"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── STORY ── -->
+  <section class="story" id="story">
+    <div class="container">
+      <div class="story__grid">
+        <div class="story__images reveal">
+          <img class="story__img-main" src="assets/images/bag-back.jpg" alt="Joule bag back view">
+          <img class="story__img-secondary" src="assets/images/handbag-exp.jpg" alt="Joule handbag expanded">
+          <div class="story__badge"><span>OLO<br>ART<br>STUDIO</span></div>
+        </div>
+        <div class="story__text">
+          <p class="section-label reveal">The Origin</p>
+          <h2 class="reveal delay-1">Built From<br><em>A Real Need</em></h2>
+          <p class="reveal delay-2">
+            There's a generation of creators moving between cities, time zones, and continents —
+            building companies from hotel rooms, airports, and open-air markets. They carry
+            everything but still arrive nowhere with a proper workspace.
+          </p>
+          <blockquote class="story__quote reveal delay-3">
+            "You can travel anywhere. But your workspace cannot follow."
+          </blockquote>
+          <p class="reveal delay-4">
+            That was the frustration at the heart of Joule. As an African creator building
+            across borders, OLO Art Studio felt it firsthand — the friction of working on
+            the move, the hunched posture, the scattered setup.
+          </p>
+          <p class="reveal delay-5">So they stopped adapting to broken systems — and built a new one.</p>
+          <div class="story__meta reveal delay-5">
+            <div><span class="meta-label">Modules</span><span class="meta-value">3</span></div>
+            <div><span class="meta-label">Carry Modes</span><span class="meta-value">4+</span></div>
+            <div><span class="meta-label">Reach</span><span class="meta-value">Global</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── PROBLEM ── -->
+  <section class="problem" id="problem">
+    <div class="container">
+      <div class="problem__grid">
+        <div>
+          <p class="section-label reveal">The Problem</p>
+          <h2 class="problem__heading reveal delay-1">
+            MOBILITY HAS <span class="highlight">EVOLVED.</span><br>WORK HASN'T.
+          </h2>
+          <p class="problem__text reveal delay-2">
+            You've got the bag, the gear, the ticket — but the moment you land, you're
+            hunched over a coffee shop table, balanced on a suitcase, chasing a power
+            outlet. The world became mobile. Your workspace didn't.
+          </p>
+          <div class="carry-list reveal delay-3">
+            <p class="carry-list__label">You already carry</p>
+            <div class="carry-list__item">A laptop, charged and ready</div>
+            <div class="carry-list__item">Chargers, cables, dongles</div>
+            <div class="carry-list__item">Accessories and peripherals</div>
+            <div class="carry-list__item">Everything — except a desk</div>
+          </div>
+        </div>
+        <div>
+          <div class="struggles reveal delay-2">
+            <h4>What you're still missing</h4>
+            <div class="struggle-list">
+              <div class="struggle-item">
+                <div class="struggle-icon">
+                  <svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square">
+                    <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
+                  </svg>
+                </div>
+                <div class="struggle-text">
+                  <strong>No proper workspace</strong>
+                  <span>Every surface is a compromise</span>
+                </div>
+              </div>
+              <div class="struggle-item">
+                <div class="struggle-icon">
+                  <svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square">
+                    <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
+                  </svg>
+                </div>
+                <div class="struggle-text">
+                  <strong>Poor posture, real pain</strong>
+                  <span>Hunched for hours, every day</span>
+                </div>
+              </div>
+              <div class="struggle-item">
+                <div class="struggle-icon">
+                  <svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square">
+                    <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
+                  </svg>
+                </div>
+                <div class="struggle-text">
+                  <strong>Disorganized setup</strong>
+                  <span>Cables everywhere, nothing to hand</span>
+                </div>
+              </div>
+              <div class="struggle-item">
+                <div class="struggle-icon">
+                  <svg width="11" height="11" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square">
+                    <line x1="2" y1="2" x2="12" y2="12"/><line x1="12" y1="2" x2="2" y2="12"/>
+                  </svg>
+                </div>
+                <div class="struggle-text">
+                  <strong>Lost productivity</strong>
+                  <span>You're mobile — your workflow isn't</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── SOLUTION ── -->
+  <section class="solution" id="solution">
+    <div class="container">
+      <div class="solution__intro reveal">
+        <p class="section-label" style="justify-content:center">The Solution</p>
+        <h2>MEET <em>JOULE</em></h2>
+        <p>Three movements. One complete setup. Deploy a full workspace from a single bag in under 60 seconds.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal delay-1" data-step="1">
+          <div class="step-num">Step 01</div>
+          <h3>CARRY</h3>
+          <p>Joule travels as a premium backpack or polished carry-on — structured, secure, ready. Looks like luggage. Thinks like an office.</p>
+          <img class="step-card__img" src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323665/4O5A0688_zhhvja.jpg" alt="Carry mode" loading="lazy">
+          <div class="step-card__bullets">
+            <div class="step-card__bullet">Premium ergonomic backpack straps</div>
+            <div class="step-card__bullet">Telescopic carry-on handle</div>
+            <div class="step-card__bullet">Smooth-roll wheel system</div>
+          </div>
+        </div>
+        <div class="step-card reveal delay-2" data-step="2">
+          <div class="step-num">Step 02</div>
+          <h3>DEPLOY</h3>
+          <p>One motion unfolds an entire workspace. Foldable table, collapsible seat, structured environment — all from within the bag.</p>
+          <img class="step-card__img" src="assets/images/design.jpg" alt="Deploy workstation" loading="lazy">
+          <div class="step-card__bullets">
+            <div class="step-card__bullet">Foldable telescopic table</div>
+            <div class="step-card__bullet">Collapsible stool system</div>
+            <div class="step-card__bullet">Stable on any surface</div>
+          </div>
+        </div>
+        <div class="step-card reveal delay-3" data-step="3">
+          <div class="step-num">Step 03</div>
+          <h3>WORK</h3>
+          <p>Set up. Powered. Seated. Focused. Airport, café, rooftop — it doesn't matter. Joule turns anywhere into a workspace worth working in.</p>
+          <img class="step-card__img" src="assets/images/chair.jpg" alt="Work anywhere" loading="lazy">
+          <div class="step-card__bullets">
+            <div class="step-card__bullet">USB-C powered instantly</div>
+            <div class="step-card__bullet">Biometric-secured</div>
+            <div class="step-card__bullet">Ready in under 60 seconds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── FEATURES ── -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="features__intro">
+        <h2 class="reveal">
+          MOST BAGS CARRY<br>YOUR <em>TOOLS.</em><br>JOULE BECOMES <em>THEM.</em>
+        </h2>
+        <div class="features__copy">
+          <p class="reveal delay-1">
+            Every element of Joule is designed with one question in mind: what does a modern
+            professional actually need to work well, anywhere in the world?
+          </p>
+          <p class="reveal delay-2">
+            The answer wasn't a smarter bag. It was a smarter system — one that erases the
+            line between carrying and creating.
+          </p>
+          <p class="features__tagline reveal delay-3">
+            "Not a bag with features. A workspace with straps."
+          </p>
+        </div>
+      </div>
+      <div class="features__grid">
+        <div class="feature-card reveal">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/>
+            </svg>
+          </div>
+          <h3>MODULAR SYSTEM</h3>
+          <p>Three modes, one intelligent chassis designed to adapt to how you move through the world.</p>
+          <div class="feature-bullets">
+            <div class="feature-bullet">Backpack + Carry-on integration</div>
+            <div class="feature-bullet">Expandable leather handbag included</div>
+            <div class="feature-bullet">Total flexibility by design</div>
+          </div>
+        </div>
+        <div class="feature-card reveal delay-1">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+              <rect x="3" y="3" width="18" height="18"/>
+              <line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/>
+            </svg>
+          </div>
+          <h3>BUILT-IN WORKSTATION</h3>
+          <p>A foldable table and collapsible seat emerge from the bag itself — a desk you've been carrying all along.</p>
+          <div class="feature-bullets">
+            <div class="feature-bullet">Telescopic table leg system</div>
+            <div class="feature-bullet">Collapsible stool — 47.5cm height</div>
+            <div class="feature-bullet">Real-world usability, tested</div>
+          </div>
+        </div>
+        <div class="feature-card reveal delay-2">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+              <rect x="2" y="6" width="20" height="14" rx="2"/>
+              <path d="M16 6V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+              <line x1="12" y1="11" x2="12" y2="16"/>
+              <line x1="9.5" y1="13.5" x2="14.5" y2="13.5"/>
+            </svg>
+          </div>
+          <h3>SMART SECURITY</h3>
+          <p>Biometric authentication, hidden compartments, and a privacy-first interior guard everything you carry.</p>
+          <div class="feature-bullets">
+            <div class="feature-bullet">Fingerprint biometric lock</div>
+            <div class="feature-bullet">Hidden compartment system</div>
+            <div class="feature-bullet">Privacy-focused architecture</div>
+          </div>
+        </div>
+        <div class="feature-card reveal delay-1">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+              <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/>
+            </svg>
+          </div>
+          <h3>POWER ON THE GO</h3>
+          <p>An external USB-C port keeps devices powered without opening the bag or hunting for a socket.</p>
+          <div class="feature-bullets">
+            <div class="feature-bullet">External USB-C port</div>
+            <div class="feature-bullet">Clean cable management routing</div>
+            <div class="feature-bullet">Compatible with any power bank</div>
+          </div>
+        </div>
+        <div class="feature-card reveal delay-2">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+              <rect x="3" y="3" width="18" height="18"/>
+              <line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/>
+            </svg>
+          </div>
+          <h3>SMART ORGANIZATION</h3>
+          <p>Segmented compartments and dedicated device slots — everything has a place and is always reachable.</p>
+          <div class="feature-bullets">
+            <div class="feature-bullet">Segmented laptop + device slots</div>
+            <div class="feature-bullet">Accessory pockets and routing</div>
+            <div class="feature-bullet">Considered interior architecture</div>
+          </div>
+        </div>
+        <div class="feature-card reveal delay-3">
+          <div class="feature-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square">
+              <rect x="3" y="6" width="18" height="13"/>
+              <path d="M3 10h18"/><path d="M8 6V4"/><path d="M16 6V4"/>
+            </svg>
+          </div>
+          <h3>EXPANDABLE HANDBAG</h3>
+          <p>The included leather handbag expands from compact to capacious as the day demands it.</p>
+          <div class="feature-bullets">
+            <div class="feature-bullet">260×200mm → 260×400mm expansion</div>
+            <div class="feature-bullet">1.5mm premium leather</div>
+            <div class="feature-bullet">Dedicated phone compartment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── SPECS ── -->
+  <section class="specs" id="specs">
+    <div class="container">
+      <div class="specs__head reveal">
+        <p class="section-label" style="justify-content:center">Specifications</p>
+        <h2>BUILT FOR THE REAL WORLD</h2>
+        <p>Precision-engineered. Premium materials. Designed to handle anything from a 14-hour flight to a rooftop meeting.</p>
+      </div>
+      <div class="specs__portraits">
+        <div class="spec-portrait reveal delay-1">
+          <img src="assets/images/bag-carry.jpg" alt="Joule as carry-on" loading="lazy">
+          <div class="spec-portrait__veil"></div>
+          <div class="spec-portrait__body">
+            <p class="spec-portrait__tag">Product Spec</p>
+            <h3 class="spec-portrait__name">CARRY-ON / BACKPACK</h3>
+            <p class="spec-portrait__dims">480 × 350 × 150 mm</p>
+            <div class="spec-rows">
+              <div class="spec-row"><span class="spec-key">Shell</span><span class="spec-val">Aluminum / ABS</span></div>
+              <div class="spec-row"><span class="spec-key">Wheels</span><span class="spec-val">Smooth-roll dual</span></div>
+              <div class="spec-row"><span class="spec-key">Handle</span><span class="spec-val">Telescopic aluminum</span></div>
+              <div class="spec-row"><span class="spec-key">Straps</span><span class="spec-val">Padded ergonomic</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="spec-portrait reveal delay-2">
+          <img src="assets/images/bag-back.jpg" alt="Joule backpack" loading="lazy">
+          <div class="spec-portrait__veil"></div>
+          <div class="spec-portrait__body">
+            <p class="spec-portrait__tag">Product Spec</p>
+            <h3 class="spec-portrait__name">WORKSTATION</h3>
+            <p class="spec-portrait__dims">Deploys in under 60 seconds</p>
+            <div class="spec-rows">
+              <div class="spec-row"><span class="spec-key">Stool Height</span><span class="spec-val">475 mm</span></div>
+              <div class="spec-row"><span class="spec-key">Diameter</span><span class="spec-val">310 mm</span></div>
+              <div class="spec-row"><span class="spec-key">Table Leg</span><span class="spec-val">Telescopic steel</span></div>
+              <div class="spec-row"><span class="spec-key">Security</span><span class="spec-val">Biometric lock</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="spec-portrait reveal delay-3">
+          <img src="assets/images/handbag.jpg" alt="Joule handbag" loading="lazy">
+          <div class="spec-portrait__veil"></div>
+          <div class="spec-portrait__body">
+            <p class="spec-portrait__tag">Product Spec</p>
+            <h3 class="spec-portrait__name">LEATHER HANDBAG</h3>
+            <p class="spec-portrait__dims">260 × 200 × 100 mm</p>
+            <div class="spec-rows">
+              <div class="spec-row"><span class="spec-key">Expanded</span><span class="spec-val">260 × 400 × 100 mm</span></div>
+              <div class="spec-row"><span class="spec-key">Material</span><span class="spec-val">Premium leather 1.5mm</span></div>
+              <div class="spec-row"><span class="spec-key">Hardware</span><span class="spec-val">Gold-tone zips</span></div>
+              <div class="spec-row"><span class="spec-key">USB-C</span><span class="spec-val">External port</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="section-label reveal" style="margin-top:48px">Made For</p>
+      <div class="who-grid">
+        <div class="who-card reveal delay-1">
+          <div class="who-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <span class="who-label">Digital Nomads</span>
+        </div>
+        <div class="who-card reveal delay-2">
+          <div class="who-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><rect x="2" y="3" width="20" height="14"/><polyline points="8,21 16,21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <span class="who-label">Remote Workers</span>
+        </div>
+        <div class="who-card reveal delay-3">
+          <div class="who-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+          <span class="who-label">Creators &amp; Designers</span>
+        </div>
+        <div class="who-card reveal delay-4">
+          <div class="who-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><polyline points="23,6 13.5,15.5 8.5,10.5 1,18"/><polyline points="17,6 23,6 23,12"/></svg></div>
+          <span class="who-label">Entrepreneurs</span>
+        </div>
+        <div class="who-card reveal delay-5">
+          <div class="who-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <span class="who-label">Frequent Travellers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── GALLERY ── -->
+  <section class="gallery" id="gallery">
+    <div class="gallery__head reveal">
+      <p class="section-label" style="justify-content:center">The Craft</p>
+      <h2>DESIGNED TO BE SEEN</h2>
+      <p>Every stitch, strap, and surface is intentional.</p>
+    </div>
+    <div class="gallery__grid">
+      <div class="gallery__item g--1"><img src="assets/images/bag-front.jpg"    alt="Joule front" loading="lazy"></div>
+      <div class="gallery__item g--2"><img src="assets/images/handbag.jpg"      alt="Handbag" loading="lazy"></div>
+      <div class="gallery__item g--3"><img src="assets/images/chair.jpg"        alt="Collapsible stool" loading="lazy"></div>
+      <div class="gallery__item g--4"><img src="assets/images/handbag-exp.jpg" alt="Handbag expanded" loading="lazy"></div>
+      <div class="gallery__item g--5"><img src="assets/images/before-after.jpg" alt="Before and after" loading="lazy"></div>
+      <div class="gallery__item g--6"><img src="assets/images/fab1.jpg"         alt="Fabrication" loading="lazy"></div>
+      <div class="gallery__item g--7"><img src="assets/images/fab2.jpg"         alt="In progress" loading="lazy"></div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── KICKSTARTER CTA ── -->
+  <section class="cta" id="ks">
+    <div class="container">
+      <div class="cta__inner">
+        <div class="cta__badge reveal"><div class="cta__dot"></div>Now Live on Kickstarter</div>
+        <h2 class="reveal delay-1">
+          THE WAY WE WORK IS <em>CHANGING.</em><br>YOUR TOOLS SHOULD TOO.
+        </h2>
+        <p class="reveal delay-2">
+          Joule is more than a product launch. It's proof that the future of work can be
+          built from anywhere — including Africa.
+        </p>
+        <p class="reveal delay-3">
+          Your support brings Joule to life — helping us manufacture at scale, deliver a
+          premium product, and redefine what's possible for mobile creators worldwide.
+        </p>
+        <div class="cta__perks reveal delay-3">
+          <div class="perk">
+            <div class="perk__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+            <div class="perk__title">Early Bird Pricing</div>
+            <div class="perk__sub">Exclusive launch rate</div>
+          </div>
+          <div class="perk">
+            <div class="perk__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10"/></svg></div>
+            <div class="perk__title">Priority Access</div>
+            <div class="perk__sub">First in line to ship</div>
+          </div>
+          <div class="perk">
+            <div class="perk__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27,6.96 12,12.01 20.73,6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+            <div class="perk__title">Scale Production</div>
+            <div class="perk__sub">Manufacture at volume</div>
+          </div>
+          <div class="perk">
+            <div class="perk__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+            <div class="perk__title">Built in Africa</div>
+            <div class="perk__sub">Support African innovation</div>
+          </div>
+        </div>
+        <div class="cta__actions reveal delay-4">
+          <a href="https://www.kickstarter.com" target="_blank" rel="noopener"
+             class="btn btn--primary">Back Us on Kickstarter</a>
+          <a href="#waitlist" class="btn btn--ghost">Join the Waitlist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WAITLIST ── -->
+  <section class="waitlist" id="waitlist">
+    <div class="container">
+      <div class="waitlist__inner">
+        <p class="section-label reveal" style="justify-content:center">Early Access</p>
+        <h3 class="reveal delay-1">BE FIRST.</h3>
+        <p class="reveal delay-2">
+          Join the Joule waitlist — early bird pricing, priority delivery, and launch
+          updates, reserved for you.
+        </p>
+        <div class="waitlist__form reveal delay-3">
+          <input type="email" class="waitlist__input" id="waitlistEmail" placeholder="Your email address">
+          <button class="waitlist__submit" id="waitlistBtn">Notify Me</button>
+        </div>
+        <p class="waitlist__note reveal delay-4" id="waitlistNote">
+          No spam. No noise. Just the launch, when it happens.
+        </p>
+        <div class="waitlist__success" id="waitlistSuccess">
+          <strong>YOU'RE IN.</strong>
+          <span>We'll notify you the moment Joule launches on Kickstarter.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__logo">J<span>O</span>ULE</div>
+        <div class="footer__tagline">A new way to work, by OLO Art Studio.</div>
+      </div>
+      <ul class="footer__links">
+        <li><a href="#" id="privacyLink">Privacy Policy</a></li>
+        <li><a href="mailto:hello@joule.studio">Contact</a></li>
+        <li><a href="https://www.kickstarter.com" target="_blank" rel="noopener">Kickstarter ↗</a></li>
+      </ul>
+      <div class="footer__right">
+        <div class="footer__copy">© 2025 OLO Art Studio</div>
+        <div class="footer__credit">Made with <span>✦</span> in Africa</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── LIGHTBOX ── -->
+  <div class="lightbox" id="lightbox">
+    <img id="lightboxImg" src="" alt="Joule product image">
+    <button class="lightbox__close" id="lightboxClose">✕</button>
+  </div>
+
+  <!-- ── PRIVACY MODAL ── -->
+  <div class="modal" id="privacyModal">
+    <div class="modal__box">
+      <button class="modal__close" id="modalClose">✕</button>
+      <p class="modal__tag">Legal</p>
+      <h3 class="modal__title">PRIVACY POLICY</h3>
+      <p class="modal__text">
+        Joule by OLO Art Studio collects only the information you voluntarily provide —
+        such as your email when joining our waitlist. We do not sell or share your data
+        with third parties.
+      </p>
+      <p class="modal__text">
+        Your email is used solely to notify you of the Joule Kickstarter launch.
+        Unsubscribe anytime at
+        <a href="mailto:hello@joule.studio" class="modal__link">hello@joule.studio</a>.
+      </p>
+      <p class="modal__footer">© 2025 OLO Art Studio · Lagos, Nigeria</p>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
