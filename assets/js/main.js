@@ -71,8 +71,41 @@
 (function initNav() {
   const hamburger = document.getElementById('hamburger');
   const drawer    = document.getElementById('drawer');
-  if (!hamburger || !drawer) return;
+  const nav       = document.getElementById('mainNav');
+  if (!hamburger || !drawer || !nav) return;
 
+  // Hide nav on load, show on scroll or tap
+  let navVisible = false;
+
+  function showNav() {
+    nav.style.transform   = 'translateY(0)';
+    nav.style.opacity     = '1';
+    nav.style.pointerEvents = 'all';
+    navVisible = true;
+  }
+
+  function hideNav() {
+    nav.style.transform   = 'translateY(-100%)';
+    nav.style.opacity     = '0';
+    nav.style.pointerEvents = 'none';
+    navVisible = false;
+  }
+
+  // Show nav when user scrolls down past hero
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80) {
+      showNav();
+    } else {
+      hideNav();
+    }
+  });
+
+  // Show nav on any tap/click anywhere on screen (mobile)
+  document.addEventListener('touchstart', () => {
+    showNav();
+  }, { once: false, passive: true });
+
+  // Hamburger toggle for drawer
   hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('is-open');
     drawer.classList.toggle('is-open');

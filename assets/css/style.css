@@ -92,6 +92,8 @@
 
 
 /* ── 2. RESET & BASE ──────────────────────────────────────────── */
+:root { --page-pad: 60px; }
+
 *, *::before, *::after {
   margin: 0; padding: 0;
   box-sizing: border-box;
@@ -109,6 +111,19 @@ body {
   overflow-x: hidden;
   cursor: none;
   transition: background var(--transition), color var(--transition);
+}
+
+/* Ensure the hero scroll indicator aligns with the hero text padding */
+.hero__scroll {
+  left: var(--page-pad) !important;
+}
+
+/* Keep the variable in sync with responsive paddings */
+@media (max-width: 1024px) {
+  :root { --page-pad: 28px; }
+}
+@media (max-width: 640px) {
+  :root { --page-pad: 24px; }
 }
 img { display: block; max-width: 100%; height: auto; }
 a { text-decoration: none; color: inherit; }
@@ -326,7 +341,7 @@ body:has(button:hover) .cursor-dot { width: 20px; height: 20px; }
 /* ── 7. HERO ──────────────────────────────────────────────────── */
 .hero {
   position: relative;
-  height: 100vh; min-height: 700px;
+  height: 115vh; min-height: 700px;
   display: flex; align-items: center;
   overflow: hidden;
 }
