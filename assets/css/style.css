@@ -347,16 +347,16 @@ body:has(button:hover) .cursor-dot { width: 20px; height: 20px; }
 }
 .hero__bg {
   position: absolute; inset: 0; z-index: 0;
-  background-image: url('/Joule/assets/images/Hero-bg.png');
+  background-image: url('/assets/images/Hero-bg2.jpg');
   background-size: cover;
   background-position: center 25%;
   transform: scale(1.06);
   animation: heroZoom 14s var(--ease-out) forwards;
   transition: filter var(--transition);
 }
-[data-theme="dark"]  .hero__bg { filter: brightness(0.42) saturate(0.82); }
+[data-theme="dark"]  .hero__bg { filter: brightness(0.62) saturate(0.7); }
 [data-theme="light"] .hero__bg { filter: brightness(0.80) saturate(0.88); }
-@keyframes heroZoom { to { transform: scale(1); } }
+@keyframes heroZoom { to { transform: scale(1.5); } }
 
 .hero__veil-side {
   position: absolute; inset: 0; z-index: 1;
@@ -650,17 +650,17 @@ body:has(button:hover) .cursor-dot { width: 20px; height: 20px; }
 }
 .story__images { position: relative; height: 540px; }
 .story__img-main {
-  position: absolute; width: 76%; height: 72%;
+  position: absolute; width: 80%; height: 80%;
   object-fit: cover; top: 0; left: 0;
-  border: 1px solid var(--border-o);
+  border: 8px solid var(--border-o);
   filter: var(--img-filter);
   animation: floatY 7s ease-in-out infinite;
   transition: filter var(--transition);
 }
 .story__img-secondary {
-  position: absolute; width: 50%; height: 46%;
+  position: absolute; width: 50%; height: 50%;
   object-fit: cover; bottom: 0; right: 0;
-  border: 1px solid var(--border-o);
+  border: 4px solid var(--border-o);
   filter: var(--img-filter);
   animation: floatY 7s ease-in-out infinite 2s;
   transition: filter var(--transition);

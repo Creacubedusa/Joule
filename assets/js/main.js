@@ -18,27 +18,41 @@
 
 /* ── 1. CUSTOM CURSOR ─────────────────────────────────────────── */
 (function initCursor() {
+  // Only run on true pointer devices — skip touch/mobile
+  if (window.matchMedia('(hover: none)').matches) return;
+  if ('ontouchstart' in window) return;
+
   const dot  = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   if (!dot || !ring) return;
 
   let mx = 0, my = 0, rx = 0, ry = 0;
+  let rafId = null;
 
   document.addEventListener('mousemove', (e) => {
     mx = e.clientX;
     my = e.clientY;
     dot.style.left = mx + 'px';
     dot.style.top  = my + 'px';
-  });
+  }, { passive: true });
 
   function trackRing() {
     rx += (mx - rx) * 0.12;
     ry += (my - ry) * 0.12;
     ring.style.left = rx + 'px';
     ring.style.top  = ry + 'px';
-    requestAnimationFrame(trackRing);
+    rafId = requestAnimationFrame(trackRing);
   }
   trackRing();
+
+  // Pause animation when tab not visible (perf)
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(rafId);
+    } else {
+      trackRing();
+    }
+  });
 })();
 
 
@@ -74,47 +88,64 @@
   const nav       = document.getElementById('mainNav');
   if (!hamburger || !drawer || !nav) return;
 
-  // Hide nav on load, show on scroll or tap
-  let navVisible = false;
+  // Nav is visible by default; hide only when at very top of hero (optional style effect)
+  let navVisible = true;
 
   function showNav() {
-    nav.style.transform   = 'translateY(0)';
-    nav.style.opacity     = '1';
+    nav.style.transform    = 'translateY(0)';
+    nav.style.opacity      = '1';
     nav.style.pointerEvents = 'all';
     navVisible = true;
   }
 
   function hideNav() {
-    nav.style.transform   = 'translateY(-100%)';
-    nav.style.opacity     = '0';
+    nav.style.transform    = 'translateY(-100%)';
+    nav.style.opacity      = '0';
     nav.style.pointerEvents = 'none';
     navVisible = false;
   }
 
-  // Show nav when user scrolls down past hero
+  // Always keep nav visible — remove hide behaviour that makes nav disappear at top
+  showNav();
+
+  // Optional: add scroll-based class for styling (compact/expanded)
+  let lastScrollY = 0;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 80) {
-      showNav();
-    } else {
-      hideNav();
-    }
-  });
+    const y = window.scrollY;
+    // Re-show nav if user scrolls back up
+    if (y < lastScrollY || y < 80) showNav();
+    lastScrollY = y;
+  }, { passive: true });
 
-  // Show nav on any tap/click anywhere on screen (mobile)
-  document.addEventListener('touchstart', () => {
-    showNav();
-  }, { once: false, passive: true });
-
-  // Hamburger toggle for drawer
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('is-open');
-    drawer.classList.toggle('is-open');
+  // Hamburger toggle — CSS transform handles show/hide, we just toggle class
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = drawer.classList.toggle('is-open');
+    hamburger.classList.toggle('is-open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    // Lock body scroll when drawer is open
+    document.body.style.overflow = isOpen ? 'hidden' : '';
   });
 
   window.closeDrawer = function () {
-    hamburger.classList.remove('is-open');
     drawer.classList.remove('is-open');
+    hamburger.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
   };
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+      window.closeDrawer();
+    }
+  });
+
+  // Close drawer when clicking outside (on the dimmed area behind)
+  drawer.addEventListener('click', (e) => {
+    // Only close if click is on the drawer backdrop, not a link
+    if (e.target === drawer) window.closeDrawer();
+  });
 })();
 
 
@@ -130,7 +161,10 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.08 });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'  // trigger slightly before element fully enters
+  });
 
   els.forEach((el) => observer.observe(el));
 })();
@@ -146,13 +180,16 @@
     const prefix = el.dataset.prefix || '';
     const suffix = el.dataset.suffix || '';
     let current  = 0;
-    const step   = Math.max(1, Math.ceil(target / 40));
+    const duration = 1200; // ms
+    const steps    = 40;
+    const interval = Math.floor(duration / steps);
+    const step     = Math.max(1, Math.ceil(target / steps));
 
     const timer = setInterval(() => {
       current = Math.min(current + step, target);
       el.textContent = prefix + current + suffix;
       if (current >= target) clearInterval(timer);
-    }, 28);
+    }, interval);
   }
 
   const observer = new IntersectionObserver((entries) => {
@@ -183,7 +220,7 @@
   let autoTimer = null;
   let seconds   = 0;
 
-  // Switch to a given slide index
+  // Switch to a given slide index — exposed globally for inline onclick
   window.videoSwitch = function (idx, btn) {
     slides[current].classList.remove('is-active');
     tabs[current].classList.remove('is-active');
@@ -207,9 +244,20 @@
     window.videoSwitch((current + 1) % slides.length);
   }
 
-  // Start auto-play
-  autoTimer = setInterval(autoAdvance, 5000);
-  resetBar();
+  // Start auto-play only when video section enters viewport
+  const videoSection = document.getElementById('videoPlayer');
+  const startObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !autoTimer) {
+        autoTimer = setInterval(autoAdvance, 5000);
+        resetBar();
+      } else if (!entry.isIntersecting && autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    });
+  }, { threshold: 0.3 });
+  if (videoSection) startObserver.observe(videoSection);
 
   // Play button — stop auto, show "coming soon"
   if (playBtn) {
@@ -340,8 +388,11 @@
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
-        if (window.closeDrawer) window.closeDrawer();
-        target.scrollIntoView({ behavior: 'smooth' });
+        if (typeof window.closeDrawer === 'function') window.closeDrawer();
+        // Offset for fixed nav height
+        const navHeight = document.getElementById('mainNav')?.offsetHeight || 68;
+        const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+        window.scrollTo({ top, behavior: 'smooth' });
       }
     });
   });

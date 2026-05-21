@@ -32,7 +32,7 @@
       <span class="toggle-icon">☀️</span>
       <span class="toggle-label" id="themeLabel">Dark</span>
     </div>
-    <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+    <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -50,7 +50,7 @@
     <div class="hero__bg"></div>
 
     <!-- padded inner wrapper (keeps bg full-bleed while adding padding to all other hero elements) -->
-    <div class="hero__inner" style="padding:48px 24px; box-sizing:border-box;">
+    <div class="hero__inner">
 
       <div class="hero__veil-side"></div>
       <div class="hero__veil-bot"></div>
@@ -59,11 +59,10 @@
       <div class="hero__content">
         <p class="hero__eyebrow">By OLO Art Studio &mdash; USA</p>
         <h1 class="hero__title">
-          <span class="hero__line" style="display:block; white-space:nowrap;">THE&nbsp;BAG</span>
-          <span class="hero__line" style="display:block; white-space:nowrap;">THAT&nbsp;<span class="accent">BECOMES</span></span>
-          <span class="hero__line" style="display:block; white-space:nowrap;">YOUR&nbsp;DESK</span>
+          <span class="hero__line">THE BAG</span>
+          <span class="hero__line">THAT <span class="accent">BECOMES</span></span>
+          <span class="hero__line">YOUR DESK</span>
         </h1>
-        <p class="hero__subtitle">Work anywhere. Travel smarter. Stay ready.</p>
         <p class="hero__desc">
           Joule is the world's first modular backpack system that transforms into a complete
           mobile workstation — engineered for creators, remote workers, and modern professionals
@@ -75,8 +74,6 @@
           <a href="#solution" class="btn btn--ghost">See How It Works</a>
         </div>
       </div>
-
-      <p class="hero__scroll">Scroll to explore</p>
     </div>
 
     <div class="hero__stats">
@@ -138,17 +135,19 @@
       <div class="video-player reveal delay-3" id="videoPlayer">
         <div class="video-slides">
           <div class="video-slide is-active">
-            <img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323666/4O5A0692_uvxpmn.jpg" alt="Joule carry mode">
+            <img src="assets/images/carry-newest.jpg" alt="Joule carry mode">
           </div>
           <div class="video-slide">
-            <img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323664/4O5A0747_ooppav.jpg" alt="Joule work setup">
-          </div>" alt="Joule deploy workstation">
+            <img src="assets/images/setup-bag.jpg" alt="Joule work setup">
           </div>
           <div class="video-slide">
-            <img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323684/4O5A0813_paahto.jpg" alt="Joule work setup">
+            <img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323680/4O5A0783_wh73c4.jpg" alt="Joule deploy workstation">
           </div>
           <div class="video-slide">
-            <img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323687/4O5A0833_rzdxka.jpg" alt="Joule in the field">
+            <img src="assets/images/" alt="Joule work setup">
+          </div>
+          <div class="video-slide">
+            <img src="assets/images/Work 2.jpg" alt="Joule in the field">
           </div>
         </div>
         <div class="video-overlay"></div>
@@ -185,9 +184,7 @@
     <div class="container">
       <div class="story__grid">
         <div class="story__images reveal">
-          <img class="story__img-main" src="assets/images/bag-back.jpg" alt="Joule bag back view">
-          <img class="story__img-secondary" src="assets/images/handbag-exp.jpg" alt="Joule handbag expanded">
-          <div class="story__badge"><span>OLO<br>ART<br>STUDIO</span></div>
+          <img class="story__img-main" src="assets/images/oloart gradient.png" alt="oloart-logo">
         </div>
         <div class="story__text">
           <p class="section-label reveal">The Origin</p>
@@ -310,7 +307,7 @@
           <div class="step-num">Step 01</div>
           <h3>CARRY</h3>
           <p>Joule travels as a premium backpack or polished carry-on — structured, secure, ready. Looks like luggage. Thinks like an office.</p>
-          <img class="step-card__img" src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323665/4O5A0688_zhhvja.jpg" alt="Carry mode" loading="lazy">
+          <img class="step-card__img" src="assets/images/carry-newest.jpg" alt="Carry mode" loading="lazy">
           <div class="step-card__bullets">
             <div class="step-card__bullet">Premium ergonomic backpack straps</div>
             <div class="step-card__bullet">Telescopic carry-on handle</div>
@@ -321,7 +318,7 @@
           <div class="step-num">Step 02</div>
           <h3>DEPLOY</h3>
           <p>One motion unfolds an entire workspace. Foldable table, collapsible seat, structured environment — all from within the bag.</p>
-          <img class="step-card__img" src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323675/4O5A0749_xvkupl.jpg" alt="Deploy workstation" loading="lazy">
+          <img class="step-card__img" src="assets/images/deploy.jpg" alt="Deploy workstation" loading="lazy">
           <div class="step-card__bullets">
             <div class="step-card__bullet">Foldable telescopic table</div>
             <div class="step-card__bullet">Collapsible stool system</div>
@@ -332,7 +329,7 @@
           <div class="step-num">Step 03</div>
           <h3>WORK</h3>
           <p>Set up. Powered. Seated. Focused. Airport, café, rooftop — it doesn't matter. Joule turns anywhere into a workspace worth working in.</p>
-          <img class="step-card__img" src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323680/4O5A0783_wh73c4.jpg" alt="Work anywhere" loading="lazy">
+          <img class="step-card__img" src="assets/images/Work 2.jpg" alt="Work anywhere" loading="lazy">
           <div class="step-card__bullets">
             <div class="step-card__bullet">USB-C powered instantly</div>
             <div class="step-card__bullet">Biometric-secured</div>
@@ -474,7 +471,7 @@
       </div>
       <div class="specs__portraits">
         <div class="spec-portrait reveal delay-1">
-          <img src="assets/images/bag-carry.jpg" alt="Joule as carry-on" loading="lazy">
+          <img src="assets/images/Back-view.jpg" alt="Joule as carry-on" loading="lazy">
           <div class="spec-portrait__veil"></div>
           <div class="spec-portrait__body">
             <p class="spec-portrait__tag">Product Spec</p>
@@ -489,7 +486,7 @@
           </div>
         </div>
         <div class="spec-portrait reveal delay-2">
-          <img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323675/4O5A0749_xvkupl.jpg" alt="Joule backpack" loading="lazy">
+          <img src="assets/images/deploy.jpg" alt="Joule backpack" loading="lazy">
           <div class="spec-portrait__veil"></div>
           <div class="spec-portrait__body">
             <p class="spec-portrait__tag">Product Spec</p>
@@ -504,7 +501,7 @@
           </div>
         </div>
         <div class="spec-portrait reveal delay-3">
-          <img src="assets/images/handbag.jpg" alt="Joule handbag" loading="lazy">
+          <img src="assets/images/Small Bag, Expanded.jpeg" alt="Joule handbag" loading="lazy">
           <div class="spec-portrait__veil"></div>
           <div class="spec-portrait__body">
             <p class="spec-portrait__tag">Product Spec</p>
@@ -556,16 +553,17 @@
       <p>Every stitch, strap, and surface is intentional.</p>
     </div>
     <div class="gallery__grid">
-      <div class="gallery__item g--1"><img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323692/4O5A0869_czqawc.jpg"    alt="Joule front" loading="lazy"></div>
-      <div class="gallery__item g--2"><img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323685/4O5A0886_coouui.jpg"      alt="Handbag" loading="lazy"></div>
-      <div class="gallery__item g--3"><img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323684/4O5A0813_paahto.jpg"        alt="Collapsible stool" loading="lazy"></div>
-      <div class="gallery__item g--4"><img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323694/4O5A0881_sopfs4.jpg" alt="Handbag expanded" loading="lazy"></div>
-      <div class="gallery__item g--5"><img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323695/4O5A0932_bruciy.jpg" alt="Before and after" loading="lazy"></div>
-      <div class="gallery__item g--6"><img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323760/4O5A0900_b1rmdi.jpg"         alt="Fabrication" loading="lazy"></div>
-      <div class="gallery__item g--7"><img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323764/4O5A0925_dsfvmv.jpg"         alt="In progress" loading="lazy"></div>
-      <div class="gallery__item g--8"><img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323736/4O5A0898_tux61y.jpg"         alt="In progress" loading="lazy"></div>
-      <div class="gallery__item g--9"><img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323681/4O5A0787_v7tal5.jpg"         alt="In progress" loading="lazy"></div>
-      <div class="gallery__item g--10"><img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323691/4O5A0860_jn8pot.jpg"         alt="In progress" loading="lazy"></div>
+      <div class="gallery__item g--1"><img src="assets/images/Full-product.jpg"    alt="Joule front" loading="lazy"></div>
+      <div class="gallery__item g--2"><img src="assets/images/Handbag.jpg"      alt="Handbag" loading="lazy"></div>
+      <div class="gallery__item g--4"><img src="assets/images/Security.jpg"        alt="Collapsible stool" loading="lazy"></div>
+      <div class="gallery__item g--5"><img src="assets/images/Charging.jpg" alt="Handbag expanded" loading="lazy"></div>
+      <div class="gallery__item g--6"><img src="assets/images/carry-newest.jpg" alt="Before and after" loading="lazy"></div>
+      <div class="gallery__item g--7"><img src="assets/images/Back-view.jpg"         alt="Fabrication" loading="lazy"></div>
+      <div class="gallery__item g--8"><img src="assets/images/Third section.jpg"         alt="In progress" loading="lazy"></div>
+      <div class="gallery__item g--9"><img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323736/4O5A0898_tux61y.jpg"         alt="In progress" loading="lazy"></div>
+      <div class="gallery__item g--10"><img src="assets/images/Sit-work (1).jpg"         alt="In progress" loading="lazy"></div>
+      <div class="gallery__item g--11"><img src="assets/images/chair.jpg"         alt="In progress" loading="lazy"></div>
+      <div class="gallery__item g--11"><img src="assets/images/Small Bag...Normal.jpeg"         alt="In progress" loading="lazy"></div>
     </div>
   </section>
 
@@ -629,7 +627,7 @@
           updates, reserved for you.
         </p>
         <div class="waitlist__form reveal delay-3">
-          <input type="email" class="waitlist__input" id="waitlistEmail" placeholder="Your email address">
+          <input type="email" class="waitlist__input" id="waitlistEmail" placeholder="Your email address" autocomplete="email">
           <button class="waitlist__submit" id="waitlistBtn">Notify Me</button>
         </div>
         <p class="waitlist__note reveal delay-4" id="waitlistNote">
@@ -690,29 +688,15 @@
 
   <script src="assets/js/main.js"></script>
   <script>
-    /* ── MOBILE HAMBURGER MENU (fallback if main.js missing) ── */
-    (function() {
-      var hamburger = document.getElementById('hamburger');
-      var drawer    = document.getElementById('drawer');
-      if (!hamburger || !drawer) return;
-
-      hamburger.addEventListener('click', function() {
-        drawer.classList.toggle('is-open');
-        hamburger.setAttribute('aria-expanded', drawer.classList.contains('is-open'));
-        document.body.style.overflow = drawer.classList.contains('is-open') ? 'hidden' : '';
-      });
-
-      // Close drawer when a link is clicked
-      drawer.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() { closeDrawer(); });
-      });
-    }());
-
+    /* ── GLOBAL closeDrawer — used by drawer link onclick attributes ── */
     function closeDrawer() {
       var drawer    = document.getElementById('drawer');
       var hamburger = document.getElementById('hamburger');
       if (drawer)    drawer.classList.remove('is-open');
-      if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+      if (hamburger) {
+        hamburger.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
       document.body.style.overflow = '';
     }
   </script>
