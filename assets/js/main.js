@@ -354,6 +354,46 @@
     if (success) success.style.display = 'block';
 
     try { localStorage.setItem('joule-waitlist', email); } catch (err) {}
+     // Send email to external form without navigating user (hidden iframe POST)
+    (function submitToExternal(email) {
+      const externalForm = 'https://785a2402.sibforms.com/serve/MUIFALatetBCxDvqZp9F-8l5suij-DAudn8jTAH1sOjiWLAZwkzVm7nF00hoX5-BAZH1-zeKGPBmBFfDSjoUC3eLfnssvfcPS6ek_C-TilEca2eUJA7dq8VA_TPF1uSdkPL6ywlJenvb_9N99aQtWcD1TE5xk-O333sUts_GDI7T1yiGy2DEqvRF1ywWafJmVb4PRK8ylWrVwE1sZw==';
+
+      // ensure hidden iframe target exists
+      let iframe = document.getElementById('sibFormTarget');
+      if (!iframe) {
+        iframe = document.createElement('iframe');
+        iframe.name = 'sibFormTarget';
+        iframe.id = 'sibFormTarget';
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+      }
+
+      // build and submit a hidden form targeting the iframe
+      const form = document.createElement('form');
+      form.action = externalForm;
+      form.method = 'POST';
+      form.target = 'sibFormTarget';
+      form.style.display = 'none';
+
+      const inputEl = document.createElement('input');
+      inputEl.type = 'hidden';
+      inputEl.name = 'email';
+      inputEl.value = email;
+      form.appendChild(inputEl);
+
+      document.body.appendChild(form);
+      try { form.submit(); } catch (e) { /* fail silently */ }
+
+      // cleanup form node shortly after submitting
+      setTimeout(() => {
+        if (form.parentNode) form.parentNode.removeChild(form);
+      }, 2000);
+    })(email);
+
+    // show success message (keep existing behaviour)
+    if (success) {
+      success.style.display = 'block';
+    }
   });
 })();
 
@@ -374,6 +414,65 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 })();
 
+// New: Contact modal + form submit via mailto
+(function initContact() {
+  const openLink = document.getElementById('contactLink');
+  const modal    = document.getElementById('contactModal');
+  const closeBtn = document.getElementById('contactModalClose');
+  const form     = document.getElementById('contactForm');
+  const feedback = document.getElementById('contactFeedback');
+  if (!openLink || !modal || !form) return;
+
+  function open(e) {
+    e.preventDefault();
+    modal.classList.add('is-open');
+  }
+  function close() {
+    modal.classList.remove('is-open');
+  }
+
+  openLink.addEventListener('click', open);
+  if (closeBtn) closeBtn.addEventListener('click', close);
+  modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const first = (document.getElementById('contactFirst')?.value || '').trim();
+    const last  = (document.getElementById('contactLast')?.value || '').trim();
+    const email = (document.getElementById('contactEmail')?.value || '').trim();
+    const msg   = (document.getElementById('contactMessage')?.value || '').trim();
+
+    if (!first || !last || !email || !msg) {
+      feedback.style.display = 'block';
+      feedback.textContent = 'Please fill all fields before sending.';
+      setTimeout(() => { feedback.style.display = 'none'; }, 2500);
+      return;
+    }
+
+    const to = 'oloart@cr34.com';
+    const subject = `Website message from ${first} ${last}`;
+    const bodyLines = [
+      `Name: ${first} ${last}`,
+      `Email: ${email}`,
+      '',
+      'Message:',
+      msg
+    ];
+    const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyLines.join('\n'))}`;
+
+    // open user's mail client
+    window.location.href = mailto;
+
+    feedback.style.display = 'block';
+    feedback.textContent = 'Your email client should open — if not, copy/paste your message to oloart@cr34.com.';
+    setTimeout(() => {
+      feedback.style.display = 'none';
+      close();
+      form.reset();
+    }, 1800);
+  });
+})();
 
 /* ── 10. SMOOTH SCROLL ────────────────────────────────────────── */
 (function initSmoothScroll() {

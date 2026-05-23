@@ -416,6 +416,36 @@ body:has(button:hover) .cursor-dot { width: 20px; height: 20px; }
 }
 [data-theme="light"] .hero__desc { color: rgba(18, 10, 2, 0.62); }
 
+/* Make hero CTA buttons accommodate longer labels */
+.hero__actions .btn {
+  flex: 1 1 0;
+  max-width: 320px;       /* allow wider buttons on desktop */
+  white-space: normal;    /* allow label to wrap */
+  word-break: break-word;
+  padding: 0 18px;        /* reduce horizontal padding so text fits */
+  font-size: 12px;        /* slightly smaller to fit long text */
+  letter-spacing: 0.12em; /* reduced tracking */
+  line-height: 1.1;
+}
+
+/* Slightly smaller on tablet */
+@media (max-width: 1024px) {
+  .hero__actions .btn {
+    max-width: 260px;
+    font-size: 11px;
+    padding: 0 14px;
+  }
+}
+
+/* On mobile keep full-width stacked buttons */
+@media (max-width: 640px) {
+  .hero__actions .btn {
+    max-width: none;
+    font-size: 13px;
+    padding: 12px 16px;
+  }
+}
+
 /* Both buttons same row, same size */
 .hero__actions {
   display: flex;
@@ -1159,10 +1189,40 @@ body:has(button:hover) .cursor-dot { width: 20px; height: 20px; }
   align-items: center; justify-content: center;
   gap: 14px;
 }
-.cta__actions .btn { flex: 1 1 0; max-width: 240px; }
+.cta__actions {
+  display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 14px;
+}
 
+/* Adjust CTA buttons so long labels wrap nicely */
+.cta__actions .btn {
+  flex: 1 1 0;
+  max-width: 320px;
+  white-space: normal;    /* allow label to wrap to multiple lines */
+  word-break: break-word; /* break long words if needed */
+  padding: 10px 16px;     /* slightly smaller horizontal padding */
+  font-size: 13px;        /* reduce font-size to fit text */
+  line-height: 1.15;
+  box-sizing: border-box;
+}
 
-/* ── 17. WAITLIST ─────────────────────────────────────────────── */
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .cta__actions .btn {
+    max-width: 280px;
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cta__actions { flex-direction: column; gap: 12px; }
+  .cta__actions .btn {
+    max-width: none;
+    width: 100%;
+    font-size: 13px;
+    padding: 12px 16px;
+  }
+}/* ── 17. WAITLIST ─────────────────────────────────────────────── */
 .waitlist {
   padding: 88px 0;
   background: var(--bg);
@@ -1511,4 +1571,39 @@ body:has(button:hover) .cursor-dot { width: 20px; height: 20px; }
   .who-grid    { grid-template-columns: 1fr; }
   .cta__perks  { grid-template-columns: 1fr; }
   .perk        { border-right: none; }
+}
+
+/* ── CONTACT FORM (modal) ───────────────────────────────────── */
+.contact-row {
+  display: flex;
+  gap: 12px;
+}
+.contact-input {
+  width: 100%;
+  padding: 10px 12px;
+  height: var(--btn-h, 44px);
+  border: 1px solid var(--border-o, #e6e6e6);
+  background: var(--bg-card, transparent);
+  color: var(--fg, #111);
+  outline: none;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+.contact-input::placeholder { color: var(--fg-dim, #9aa0a6); }
+.contact-input:focus { border-color: var(--orange, #ff7a2d); }
+
+/* Feedback text */
+#contactFeedback { color: var(--fg-dim, #9aa0a6); }
+
+/* Stack inputs on small screens */
+@media (max-width: 640px) {
+  .contact-row { flex-direction: column; gap: 10px; }
+}
+
+/* Hide hamburger on desktop, show on tablet & mobile */
+.nav__hamburger { display: none !important; }
+
+/* Show hamburger on screens <= 1024px */
+@media (max-width: 1024px) {
+  .nav__hamburger { display: inline-flex !important; }
 }

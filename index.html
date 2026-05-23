@@ -24,7 +24,7 @@
       <li><a href="#solution">Solution</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#specs">Specs</a></li>
-      <li><a href="#ks" class="nav__cta">Back on Kickstarter</a></li>
+      <li><a href="#ks" class="nav__cta">Back us on Kickstarter</a></li>
     </ul>
     <div class="nav__toggle" id="themeToggle" title="Toggle theme">
       <span class="toggle-icon">🌙</span>
@@ -42,7 +42,7 @@
     <a href="#solution" onclick="closeDrawer()">Solution</a>
     <a href="#features" onclick="closeDrawer()">Features</a>
     <a href="#specs"    onclick="closeDrawer()">Specs</a>
-    <a href="#ks"       onclick="closeDrawer()">Back on Kickstarter</a>
+    <a href="#ks"       onclick="closeDrawer()">Back us on Kickstarter</a>
   </nav>
 
   <!-- ── HERO ── -->
@@ -70,7 +70,7 @@
         </p>
         <div class="hero__actions">
           <a href="https://www.kickstarter.com" target="_blank" rel="noopener"
-             class="btn btn--primary">Back on Kickstarter</a>
+             class="btn btn--primary">Back us on Kickstarter</a>
           <a href="#solution" class="btn btn--ghost">See How It Works</a>
         </div>
       </div>
@@ -554,7 +554,7 @@
     </div>
     <div class="gallery__grid">
       <div class="gallery__item g--1"><img src="assets/images/Full-product.jpg"    alt="Joule front" loading="lazy"></div>
-      <div class="gallery__item g--2"><img src="assets/images/Handbag.jpg"      alt="Handbag" loading="lazy"></div>
+      <div class="gallery__item g--2"><img src="assets/images/Small Bag...Normal.jpeg"      alt="Handbag" loading="lazy"></div>
       <div class="gallery__item g--4"><img src="assets/images/Security.jpg"        alt="Collapsible stool" loading="lazy"></div>
       <div class="gallery__item g--5"><img src="assets/images/Charging.jpg" alt="Handbag expanded" loading="lazy"></div>
       <div class="gallery__item g--6"><img src="assets/images/carry-newest.jpg" alt="Before and after" loading="lazy"></div>
@@ -563,7 +563,7 @@
       <div class="gallery__item g--9"><img src="https://res.cloudinary.com/dckjgbfgn/image/upload/v1775323736/4O5A0898_tux61y.jpg"         alt="In progress" loading="lazy"></div>
       <div class="gallery__item g--10"><img src="assets/images/Sit-work (1).jpg"         alt="In progress" loading="lazy"></div>
       <div class="gallery__item g--11"><img src="assets/images/chair.jpg"         alt="In progress" loading="lazy"></div>
-      <div class="gallery__item g--11"><img src="assets/images/Small Bag...Normal.jpeg"         alt="In progress" loading="lazy"></div>
+ 
     </div>
   </section>
 
@@ -609,7 +609,7 @@
         </div>
         <div class="cta__actions reveal delay-4">
           <a href="https://www.kickstarter.com" target="_blank" rel="noopener"
-             class="btn btn--primary">Back Us on Kickstarter</a>
+              class="btn btn--primary">Back us on Kickstarter</a>
           <a href="#waitlist" class="btn btn--ghost">Join the Waitlist</a>
         </div>
       </div>
@@ -650,12 +650,12 @@
       </div>
       <ul class="footer__links">
         <li><a href="#" id="privacyLink">Privacy Policy</a></li>
-        <li><a href="mailto:hello@joule.studio">Contact</a></li>
+       <li><a href="#" id="contactLink">Contact</a></li>
         <li><a href="https://www.kickstarter.com" target="_blank" rel="noopener">Kickstarter ↗</a></li>
       </ul>
       <div class="footer__right">
-        <div class="footer__copy">© 2025 OLO Art Studio</div>
-        <div class="footer__credit">Made with <span>✦</span> in Africa</div>
+        <div class="footer__copy">© 2026 OLO Art Studio</div>
+        <div class="footer__credit">Made in Africa <span>✦</span> </div>
       </div>
     </div>
   </footer>
@@ -680,11 +680,36 @@
       <p class="modal__text">
         Your email is used solely to notify you of the Joule Kickstarter launch.
         Unsubscribe anytime at
-        <a href="mailto:hello@joule.studio" class="modal__link">hello@joule.studio</a>.
+        <a href="mailto:oloart@cr34.com" class="modal__link">hello@joule.studio</a>.
       </p>
-      <p class="modal__footer">© 2025 OLO Art Studio · Lagos, Nigeria</p>
+      <p class="modal__footer">© 2026 OLO Art Studio · Lagos, Nigeria</p>
     </div>
   </div>
+
+  <!-- ── CONTACT MODAL ── -->
+ <div class="modal" id="contactModal" aria-hidden="true">
+  <div class="modal__box">
+     <button class="modal__close" id="contactModalClose">✕</button>
+     <p class="modal__tag">Contact</p>
+     <h3 class="modal__title">Speak with us</h3>
+     <form id="contactForm" class="contact-form" novalidate>
+       <div class="contact-row">
+         <input id="contactFirst" class="contact-input" name="first" type="text" placeholder="First name" required>
+        <input id="contactLast"  class="contact-input" name="last"  type="text" placeholder="Last name" required>
+       </div>
+        <div style="margin-top:12px;">
+          <input id="contactEmail" class="contact-input" name="email" type="email" placeholder="Email" required>
+        </div>
+        <div style="margin-top:12px;">
+          <textarea id="contactMessage" name="message" rows="6" placeholder="How can we help?" required style="width:100%; padding:12px; resize:vertical; border:1px solid var(--border-o);"></textarea>
+       </div>
+        <div style="margin-top:16px; text-align:right;">
+          <button id="contactSubmit" type="submit" class="waitlist__submit">Send message</button>
+        </div>
+       <p id="contactFeedback" class="modal__text" style="display:none; margin-top:12px;"></p>
+    </form>
+  </div>
+ </div>
 
   <script src="assets/js/main.js"></script>
   <script>
